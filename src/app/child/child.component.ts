@@ -26,7 +26,6 @@ export class ChildComponent implements OnChanges, OnInit {
 
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.parent_id, this.child)
     for (let i = 0; i < this.child.length; i++) {
       if (this.parent_id == this.child[i]["Id"]) {
         this.data_present = true
