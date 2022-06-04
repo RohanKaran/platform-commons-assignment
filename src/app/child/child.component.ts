@@ -16,7 +16,7 @@ export class ChildComponent implements OnChanges, OnInit {
   data_present!: boolean;
   constructor(private json: FetchData) {
     json.getData("../assets/child.json").subscribe(result => {
-      console.log(result)
+      // console.log(result)
       this.child = result
     });
   }
@@ -26,16 +26,15 @@ export class ChildComponent implements OnChanges, OnInit {
 
 
   ngOnChanges(changes: SimpleChanges): void {
-    for (let i = 0; i < this.child.length; i++) {
-      if (this.parent_id == this.child[i]["Id"]) {
-        this.data_present = true
-        this.child_age = this.child[i]["age"]
-        return
+    if (this.child && this.parent_id) {
+      for (let i = 0; i < this.child.length; i++) {
+        if (this.parent_id == this.child[i]["Id"]) {
+          this.data_present = true
+          this.child_age = this.child[i]["age"]
+          return
+        }
       }
+      this.data_present = false
     }
-    this.data_present = false
   }
-
-
-
 }
