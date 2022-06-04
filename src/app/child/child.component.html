@@ -1,0 +1,5 @@
+<div class="child" [style.color]="data_present ? 'black' : 'red'">
+  {{parent_id ? (data_present ? ("Age: " + child_age) :
+  "Data not present")
+  : null }}
+</div>
